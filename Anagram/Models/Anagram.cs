@@ -23,14 +23,14 @@ namespace Anagram
     {
       _instances.Add(this);
     }
-    public string anagramWordSort(string word)
+    public static string anagramWordSort(string word)
     {
       char[] wordToArray = word.ToCharArray();
       Array.Sort(wordToArray);
       string newWord = string.Join("", wordToArray);
       return newWord;
     }
-    public bool CompareTwoWords(string x, string y)
+    public static bool CompareTwoWords(string x, string y)
     {
       return x==y;
     }
@@ -59,13 +59,13 @@ namespace Anagram
         }
       }
       List<Anagram> instances = Anagram.GetList();
-      Console.WriteLine("These words are anagrams");
+      Console.WriteLine("These words are anagrams of " + firstWord);
       foreach(Anagram word in instances)
       {
         // Anagram newAnagram1 = new Anagram ("something");
-        string wordX = word.anagramWordSort(firstWord);
-        string wordY = word.anagramWordSort(word.GetCompareWord());
-        if(word.CompareTwoWords(wordX, wordY))
+        string wordX = Anagram.anagramWordSort(firstWord);
+        string wordY = Anagram.anagramWordSort(word.GetCompareWord());
+        if(Anagram.CompareTwoWords(wordX, wordY))
         {
           Console.WriteLine(word.GetCompareWord());
         }
